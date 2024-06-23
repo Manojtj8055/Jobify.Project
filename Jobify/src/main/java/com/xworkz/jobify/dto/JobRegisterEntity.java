@@ -1,13 +1,16 @@
 package com.xworkz.jobify.dto;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -37,7 +40,10 @@ public class JobRegisterEntity {
 	private Boolean deleted = false;
 	private String updateBy;
 	private LocalDate updateOn;
+	
 
+	
+	
 	public Boolean getDeleted() {
 		return deleted;
 	}

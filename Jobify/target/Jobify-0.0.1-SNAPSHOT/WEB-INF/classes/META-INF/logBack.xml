@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<Pattern>%date %level [%thread] %logger %msg%n</Pattern>
+		</encoder>
+	</appender> 
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>C:/logs/butterfly.log</File>
+		<encoder>
+			<Pattern>%date %level [%thread] %logger %msg%n</Pattern>
+		</encoder>
+	</appender>
+
+	<!-- By default, the level of the root level is set to DEBUG -->
+	<root level="DEBUG">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE" />
+	</root>
+</configuration>

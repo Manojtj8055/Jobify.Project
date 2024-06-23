@@ -4,9 +4,11 @@ com\xworkz\jobify\enumm\AccountType.class
 com\xworkz\jobify\Encryption.class
 com\xworkz\jobify\repository\JobifyRepository.class
 com\xworkz\jobify\controller\FrontController.class
+com\xworkz\jobify\dto\ApplyEntity.class
 com\xworkz\jobify\controller\MainController.class
 com\xworkz\jobify\service\JobifyServiceImpl.class
 com\xworkz\jobify\util\OtpSending.class
+com\xworkz\jobify\service\ApplyService.class
 com\xworkz\jobify\util\OutlookEmail$1.class
 com\xworkz\jobify\dto\JobifyDTO.class
 com\xworkz\jobify\service\JobRegisterServiceImpl.class
@@ -14,6 +16,7 @@ com\xworkz\jobify\bean\DBconfig.class
 com\xworkz\jobify\service\JobifyService.class
 com\xworkz\jobify\service\JobRegisterService.class
 com\xworkz\jobify\repository\JobifyRepositoryImpl.class
+com\xworkz\jobify\service\ApplyServiceImpl.class
 com\xworkz\jobify\util\OtpVerificationService.class
 com\xworkz\jobify\util\OtpSending$1.class
 com\xworkz\jobify\bean\BeanConfig.class

@@ -164,10 +164,13 @@ public class JobRegisterServiceImpl implements JobRegisterService {
 
 	}
 
+	
 	@Override
 	public List<JobRegisterEntity> getAllActiveJobs() {
 		return repository.allActiveJobs();
 	}
+
+	
 
 	
 //	@Override

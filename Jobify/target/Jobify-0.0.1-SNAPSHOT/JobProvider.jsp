@@ -1,163 +1,175 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%
 
-%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>JobProvider</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--===============================================================================================-->    
-    <link rel="icon" type="Image/png" href="images/icons/favicon.ico"/>
-    <!--===============================================================================================-->
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <!--===============================================================================================-->
-    <!--===============================================================================================-->    
-    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="css/util.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <!--===============================================================================================-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobProvider</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+        crossorigin="anonymous">
     <style>
-        .header h1 {
-            margin-top: 0; /* Add this to remove the top margin */
-        }
         body {
-            background: #e0e5ec;
-        }
-        h1 {
-            position: relative;
-            text-align: center;
-            color: #353535;
-            font-size: 50px;
-            font-family: "Cormorant Garamond", serif;
+            background-color: #e0e5ec;
         }
 
-        p {
-            font-family: 'Lato', sans-serif;
-            font-weight: 300;
-            text-align: center;
-            font-size: 18px;
-            color: #676767;
-        }
-        .frame {
-            width: 90%;
-            margin: 40px auto;
-            text-align: center;
-        }
-        button {
-            margin: 20px;
-        }
-        .custom-btn {
-            width: 130px;
-            height: 40px;
-            color: #fff;
-            border-radius: 5px;
-            padding: 10px 25px;
-            font-family: 'Lato', sans-serif;
-            font-weight: 500;
-            background: linear-gradient(45deg, #1fd1f9, #b621fe);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: absolute;
-            right: 388px;
-            top: 315px;
-            box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5), 7px 7px 20px 0px rgba(0, 0, 0, .1), 4px 4px 5px 0px rgba(0, 0, 0, .1);
-            outline: none;
+.navbar {
+  background: linear-gradient(to right, violet, darkblue);
+  padding: 11px; /* Add padding for better visibility */
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+  color: #fff; /* You can change this color to your preferred text color */
+  font-size: 2.5rem;
+}
+
+        .header h1 {
+            margin-top: 5; /* Add this to remove the top margin */
         }
 
-        .btn-9 {
-            border: none;
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-        .btn-9:after {
-            position: absolute;
-            content: " ";
-            z-index: -1;
-            top: 0;
-            left: 0;
+        .limiter {
             width: 100%;
-            height: 100%;
-            background-color: #1fd1f9;
-            background-image: linear-gradient(315deg, #1fd1f9 0%, #b621fe 74%);
-            transition: all 0.3s ease;
+            margin: 0 auto;
         }
-        .btn-9:hover {
-            background: transparent;
-            box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .5), -4px -4px 6px 0 rgba(116, 125, 136, .2), inset -4px -4px 6px 0 rgba(255, 255, 255, .5), inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
-            color: #fff;
+
+        .container-login100 {
+            width: 100%;
+            margin: 10 auto;
+            padding-left: 15px;
+            padding-right: 15px;
         }
-        .btn-9:hover:after {
-            -webkit-transform: scale(2) rotate(180deg);
-            transform: scale(2) rotate(180deg);
-            box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .5), -4px -4px 6px 0 rgba(116, 125, 136, .2), inset -4px -4px 6px 0 rgba(255, 255, 255, .5), inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
+
+        .wrap-login100 {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .wrap-login100 form {
+            width: 100%;
+            max-width: 700px; /* Adjust the maximum width as needed */
+            margin: 100 auto;
+            position: relative;
+        }
+
+        .form-control {
+            display: block;
+            align-content;
+            width: 60%;
+            height: calc(2.5em + 0.75rem + 4px);
+            padding: 1.375rem 1.75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #495057;
+        }
+
+        .container-login100-form-btn {
+            text-align: left;
+        }
+
+        .custom-btn {
+            margin-top: 183px; /* Add margin to the button */
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .text-danger.small {
+            float: right;
+            margin-top: 10px; /* Add margin to the error messages */
+        }
+        
+        .login100-form-title{
+        font-weight: bold;
+        font-size: 50px;
         }
     </style>
 </head>
+
 <header>
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 </header>
+
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">Jobify.com</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <!-- Add any additional navigation links as needed -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#"></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="header">
-        <h1>JOBIFY.com</h1>
+        <h1></h1>
         <!-- Add any additional header content as needed -->
     </div>
+    <br>
     <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100">
-                
                 <form action="jobSave" method="post">
-                 
                     <span class="login100-form-title">
                         Job Description
                     </span>
-                     <div class="wrap-input100 validate-input">
-                        <input class="input100" type="hidden" name="id" value ="${jobRegisterDto.id}">
+                    <div class="wrap-input100 validate-input">
+                        <input class="input100" type="hidden" name="id" value="${jobRegisterDto.id}">
                     </div>
                     <div class="wrap-input100 validate-input">
                         <input class="input100" type="hidden" name="jobProviderEmail" value="<%=session.getAttribute("loggedInUserEmail")  %>">
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Valid company is required">
-                        <input class="input100" type="text" name="company" placeholder="Company Name" value="${jobRegisterDto.company}">
+                        <input class="input100 form-control" type="text" name="company" placeholder="Company Name" value="${jobRegisterDto.company}">
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Role is required">
-                        <input class="input100" type="text" name="role" placeholder="Job Role" value="${jobRegisterDto.role}">
+                        <input class="input100 form-control" type="text" name="role" placeholder="Job Role" value="${jobRegisterDto.role}">
                     </div>
-                    <div class="wrap-input100 validate-input" data-validate="experience is required">
-                        <input class="input100" type="number" name="experience" placeholder="Experience" value="${jobRegisterDto.experience}">
+                    <div class="wrap-input100 validate-input" data-validate="Experience is required">
+                        <input class="input100 form-control" type="number" name="experience" placeholder="Experience" value="${jobRegisterDto.experience}">
                     </div>
-                    <div class="wrap-input100 validate-input" data-validate="location is required">
-                        <input class="input100" type="text" name="location" placeholder="Location of JOB" value="${jobRegisterDto.location}">
+                    <div class="wrap-input100 validate-input" data-validate="Location is required">
+                        <input class="input100 form-control" type="text" name="location" placeholder="Location of JOB" value="${jobRegisterDto.location}">
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Salary is required">
-                        <input class="input100" type="number" name="salary" placeholder="CTC -per Annum" value="${jobRegisterDto.salary}">
+                        <input class="input100 form-control" type="number" name="salary" placeholder="CTC -per Annum" value="${jobRegisterDto.salary}">
                     </div>
-                    <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <input class="input100" type="text" name="skills" placeholder="Skills Required for Job" value="${jobRegisterDto.skills}">
+                    <div class="wrap-input100 validate-input" data-validate="Skills are required">
+                        <input class="input100 form-control" type="text" name="skills" placeholder="Skills Required for Job" value="${jobRegisterDto.skills}">
                     </div>
+                    <br>
                     <div class="container-login100-form-btn">
-                        <button class="login100-form-btn" type="submit" value="">${editMode ? 'Update' : 'Register'}</button>
-                        
-                        <p class="text-danger small">${jobPosted}</p>
-                        <p class="text-danger small">${jobPostedNew}</p>
-                        <p class="text-danger small">${jobNotPosted}</p>
+                        <button class="login100-form-btn btn btn-primary" type="submit" value="">${editMode ? 'Update' : 'Register'}</button>
                     </div>
+                    </form>
+                    <button class="custom-btn btn btn-info" onclick="location.href='jobDisplay'" formaction="jobDisplay" formmethod="GET">Jobs Posted..!</button>
+                    <p class="text-danger small">${jobPosted}</p>
+                    <p class="text-danger small">${jobPostedNew}</p>
+                    <p class="text-danger small">${jobNotPosted}</p>
                 
-                </form>
-                <button class="custom-btn btn-9" onclick="location.href='jobDisplay'" formaction="jobDisplay">Jobs Posted..!</button>
             </div>
         </div>
     </div>
-    <!--===============================================================================================-->
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-    <!--===============================================================================================-->
-    <!--===============================================================================================-->
-    <!--===============================================================================================-->
-    <script src="js/main.js"></script>
+    <!-- Bootstrap scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-dpNbZhBPhyUlbF0t5z0P2pVDBR9VH8RSpd+qQrJQsG5fUp4y/G7bKdRxx6bWIUf7"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy60S9Br5tYBau+AiScaF1/+2J94a9LStY"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

@@ -13,9 +13,8 @@ public interface JobRegisterService {
 	public String saveJob(JobRegisterDTO dto, Model model, JobifyDTO dto2, String loggedInUserEmail);
 
 	public JobRegisterEntity getJobsById(Integer jobsId);
-	
-	public List<JobRegisterEntity> getAllActiveJobs();
 
-	//public List<JobRegisterEntity> getAllActiveJobs(String loggedInUserEmail);
-	
+	List<JobRegisterEntity> getAllActiveJobs();
+
+
 }

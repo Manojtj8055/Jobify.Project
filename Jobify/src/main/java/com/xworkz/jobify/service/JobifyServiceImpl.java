@@ -33,71 +33,81 @@ public class JobifyServiceImpl implements JobifyService {
 //	@Autowired
 //	private OtpVerificationService otpVerificationService;
 
-	@Override
 	public boolean validateAndSave(JobifyDTO dto, Model model) {
-		if (dto != null) {
-			if (dto.getName() != null && !dto.getName().isEmpty()) {
-				System.out.println("Name is Valid");
+	    if (dto == null) {
+	        return false;
+	    }
 
-				if (dto.getEmail() != null && !dto.getEmail().isEmpty()) {
-					System.out.println("Email Valid");
+	    // Name Validation
+	    if (dto.getName() == null || dto.getName().isEmpty() || !dto.getName().matches("^[A-Za-z\\s]+$")) {
+	        model.addAttribute("nameError", "Invalid name. Please enter a valid name.");
+	        return false;
+	    } else {
+	        System.out.println("Name is Valid");
+	    }
 
-					if (dto.getPhoneNumber().matches("^[6-9]\\d{9}$")) {
-						System.out.println("Phone number Valid");
+	    // Email Validation
+	    if (dto.getEmail() == null || dto.getEmail().isEmpty() || !dto.getEmail().matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+	        model.addAttribute("emailError", "Invalid email. Please enter a valid email.");
+	        return false;
+	    } else {
+	        System.out.println("Email is Valid");
+	    }
 
-						if (dto.getPassword().length() >= 6 && dto.getConfirmPassword().length() >= 6
-								&& dto.getPassword().equals(dto.getConfirmPassword())) {
+	    // Phone Number Validation
+	    if (dto.getPhoneNumber() == null || !dto.getPhoneNumber().matches("^[6-9]\\d{9}$")) {
+	        model.addAttribute("phoneError", "Invalid phone number. Please enter a valid phone number.");
+	        return false;
+	    } else {
+	        System.out.println("Phone number is Valid");
+	    }
 
-							String encodedPassword = encryption.encrypt(dto.getPassword());
-							dto.setPassword(encodedPassword);
-							dto.setConfirmPassword(encodedPassword);
+	    // Password Validation
+	    if (dto.getPassword() == null || dto.getConfirmPassword() == null ||
+	        dto.getPassword().length() < 6 || dto.getConfirmPassword().length() < 6 ||
+	        !dto.getPassword().equals(dto.getConfirmPassword())) {
+	        model.addAttribute("passwordError", "Password and confirm password must match and be at least 6 characters long.");
+	        return false;
+	    } else {
+	        String encodedPassword = encryption.encrypt(dto.getPassword());
+	        dto.setPassword(encodedPassword);
+	        dto.setConfirmPassword(encodedPassword);
 
-							System.out.println(dto.getPassword());
+	        System.out.println(dto.getPassword());
+	        System.out.println("Password Credentials Valid");
+	    }
 
-							System.out.println("Password Credentials Valid");
+	    // Check if email already exists
+	    if (isExists(dto.getEmail(), model)) {
+	        model.addAttribute("emailExistsError", "Email already exists. Please use a different email.");
+	        return false;
+	    } else {
+	        System.out.println("Email does not exist, proceeding with registration");
+	    }
 
-							if (!isExists(dto.getEmail(), model)) {
-								System.out.println("Email valid");
+	    // Send registration email
+	    OutlookEmail.sendRegistrationEmail(dto.getEmail(), dto.getName());
 
-								OutlookEmail.sendRegistrationEmail(dto.getEmail(), dto.getName());
+	    // Save entity
+	    JobifyEntity entity = new JobifyEntity();
+	    BeanUtils.copyProperties(dto, entity);
+	    System.out.println(entity);
 
-								JobifyEntity entity = new JobifyEntity();
-								BeanUtils.copyProperties(dto, entity);
-								System.out.println(entity);
+	    entity.setCreatedBy(dto.getEmail());
+	    entity.setCreatedOn(LocalDate.now());
+	    entity.setLoginStatus("Active");
 
-								entity.setCreatedBy(dto.getEmail());
-								entity.setCreatedOn(LocalDate.now());
-								entity.setLoginStatus("Active");
-								
-								boolean flag =repository.save(entity);
-								System.out.println("flag is : - " +flag);
-								if(flag) {
-									
-									return true;	
-								}else {
-									System.out.println("No flag -----");
-								}
-								
-							}
+	    boolean flag = repository.save(entity);
+	    System.out.println("Save flag: " + flag);
+	    if (flag) {
+	        return true;
+	    } else {
+	        System.out.println("Save operation failed");
+	    }
 
-						} else {
-							model.addAttribute("passwordMissMatch", "Password not Match..!");
-						}
-
-					} else {
-						model.addAttribute("numberMissmatch", "Missmatch..!");
-					}
-
-				} else {
-					model.addAttribute("notChecking", "Re-Enter Email");
-				}
-			} else {
-				model.addAttribute("notReading", "Cross CheckName...!");
-			}
-		}
-
-		return false;
+	    return false;
 	}
+
 
 	@Override
 	public JobifyEntity findByEmail(String email, Model model) {
@@ -144,7 +154,7 @@ public class JobifyServiceImpl implements JobifyService {
 					} else {
 						model.addAttribute("pf", "Wrong Password...");
 						entity.setLoginAttempts(entity.getLoginAttempts() + 1);
-						if (entity.getLoginAttempts() <= 3) {
+						if (entity.getLoginAttempts() == 3) {
 							entity.setLoginStatus("blocked");
 						}
 						repository.save(entity);

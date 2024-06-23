@@ -10,6 +10,10 @@
     
     	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+        crossorigin="anonymous">
+    
 <!--===============================================================================================-->	
 	<link rel="icon" type="Image/png" href="images/icons/favicon.ico"/>
 <!--===============================================================================================-->
@@ -623,6 +627,19 @@ label.valid {
     margin-bottom: 10px; } }
 
 /*# sourceMappingURL=style.css.map */
+
+
+ .navbar {
+            background: linear-gradient(to right, violet, darkblue);
+            padding: 50px; /* Add padding for better visibility */
+        }
+
+        .navbar-brand,
+        .navbar-nav .nav-link {
+            color: #fff; /* You can change this color to your preferred text color */
+            font-size: 2.5rem;
+        }
+        
 		
 	
 	</style>
@@ -631,11 +648,20 @@ label.valid {
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #D3D3D3">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="#"> &ensp; &ensp; JOBIFY.com</a>
-		</div>
-	</nav>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="Registers">Jobify.com</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <!-- Add any additional navigation links as needed -->
+                <li class="nav-item">
+                </li>
+            </ul>
+        </div>
+    </nav>
 
     <div class="main">
 

@@ -1,7 +1,5 @@
 package com.xworkz.jobify.dto;
 
-
-
 public class JobifyDTO {
 	private String name;
 	private String email;

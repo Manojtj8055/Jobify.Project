@@ -10,15 +10,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class Encryption {
 
-//    public static void main(String[] args) {
-//
-//        String value = new Test().encrypt("Manoj@8055");
-//        String decryptedValue = new Test().decrypt(value);
-//
-//        System.out.println("Encrypted Value: " + value);
-//        System.out.println("Decrypted Value: " + decryptedValue);
-//    }
-
     public String encrypt(String password) {
         Base64.Encoder encoder = Base64.getEncoder();
         String encryptedStr = encoder.encodeToString(password.getBytes());

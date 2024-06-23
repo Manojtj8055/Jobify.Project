@@ -15,6 +15,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import com.mysql.cj.Query;
+import com.xworkz.jobify.dto.ApplyEntity;
 import com.xworkz.jobify.dto.JobRegisterEntity;
 import com.xworkz.jobify.dto.JobifyEntity;
 
@@ -204,19 +205,47 @@ public class JobifyRepositoryImpl implements JobifyRepository {
 		}
 
 	}
-//	@Override
-//	public List<JobRegisterEntity> allActiveJobs(String loggedInUserEmail) {
-//	    EntityManager em = emf.createEntityManager();
-//	    TypedQuery<JobRegisterEntity> active = em.createNamedQuery("JobRegisterEntity.readAll", JobRegisterEntity.class);
-//	    return active.getResultList();
-//	}
 
 	@Override
 	public List<JobRegisterEntity> allActiveJobs() {
-		  EntityManager em = emf.createEntityManager();
-		    TypedQuery<JobRegisterEntity> active = em.createNamedQuery("JobRegisterEntity.readAll", JobRegisterEntity.class);
-		    return active.getResultList();
+		EntityManager em = emf.createEntityManager();
+		TypedQuery<JobRegisterEntity> active = em.createNamedQuery("JobRegisterEntity.readAll",
+				JobRegisterEntity.class);
+		return active.getResultList();
 	}
 
+	@Override
+	@Transactional
+	public boolean saveApplications(ApplyEntity apply) {
 
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction transaction = em.getTransaction();
+		try {
+			transaction.begin();
+			apply = em.merge(apply);
+			transaction.commit();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (transaction.isActive()) {
+				transaction.rollback();
+			}
+		} finally {
+			em.close();
+		}
+		System.out.println("Application saved is : - " + apply);
+		return true;
+	}
+	
+	@Override
+	 public List<ApplyEntity> fetchApplicationsByJobId(int jobId) {
+	        EntityManager em = emf.createEntityManager();
+	        try {
+	            TypedQuery<ApplyEntity> query = em.createNamedQuery("getApplications", ApplyEntity.class);
+	            query.setParameter("app", jobId);
+	            return query.getResultList();
+	        } finally {
+	            em.close();
+	        }
+	    }
 }

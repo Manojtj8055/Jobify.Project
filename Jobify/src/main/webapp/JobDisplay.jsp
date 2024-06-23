@@ -59,7 +59,7 @@
                                 <th scope="col">Location</th>
                                 <th scope="col">Salary</th>
                                 <th scope="col">Skills</th>
-                                <th colspan="2">More Options</th>
+                                <th colspan="3">More Options</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -86,6 +86,13 @@
                                                 <button type="submit" class="btn btn-danger"
                                                     style="font-size: 16px;">Delete</button>
                                             </form>
+                                        </td>
+                                        <td>
+                                        <form action="view" method = "get" modelAttribute = "ApplyEntity">
+                                        <input type="hidden" name="jobId" value="${job.id}">
+                                           <button type="submit" class="btn btn-success"
+                                                    style="font-size: 16px;">View</button>
+                                        </form>
                                         </td>
                                     </tr>
                                 </c:if>
